@@ -22,3 +22,12 @@ env:
 
 jdk:
   - openjdk12
+
+services:
+  - postgresql
+
+before_install:
+  - psql -c 'create database postgres;' -U postgres
+
+addons:
+  postgresql: "12.2"

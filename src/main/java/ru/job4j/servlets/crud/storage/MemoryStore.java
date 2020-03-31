@@ -1,7 +1,8 @@
-package ru.job4j.servlets.crud;
+package ru.job4j.servlets.crud.storage;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
+import ru.job4j.servlets.crud.User;
 
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,7 +21,7 @@ public class MemoryStore implements Store {
     private static final MemoryStore INSTANCE = new MemoryStore();
 
     @GuardedBy("this")
-    private ConcurrentHashMap<Integer, User> storage = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Integer, User> storage = new ConcurrentHashMap<>();
 
     private MemoryStore() {
     }

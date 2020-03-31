@@ -2,6 +2,8 @@ package ru.job4j.servlets.crud;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
 /**
@@ -13,28 +15,44 @@ import java.util.Objects;
  */
 public class User {
 
-    private int id;
+    /**
+     *
+     */
+    private final int id;
 
+    /**
+     *
+     */
     private String name;
 
-    private final LocalDateTime createDate;
+    /**
+     *
+     */
+    private LocalDateTime createDate;
 
     public User(int id, String name) {
         this.id = id;
         this.name = name;
-        this.createDate = LocalDateTime.now();
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDateTime getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDateTime createDate) {
+        this.createDate = createDate;
     }
 
     @Override

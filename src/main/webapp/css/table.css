@@ -1,0 +1,16 @@
+/* Table styles */
+
+table.styled {
+    border-collapse: collapse;
+    width: 50%
+}
+table.styled > thead, th {
+    background-color: #dfdfdf;
+}
+table.styled > thead, th {
+    text-align: center;
+}
+table.styled th, table.styled td {
+    border: 1px solid lightgray;
+    padding: 5px;
+}
