@@ -1,4 +1,8 @@
-package ru.job4j.servlets.crud;
+package ru.job4j.servlets.crud.model;
+
+import ru.job4j.servlets.crud.storage.MemoryStore;
+import ru.job4j.servlets.crud.storage.Store;
+import ru.job4j.servlets.crud.User;
 
 import java.util.List;
 import java.util.Objects;

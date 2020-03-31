@@ -1,4 +1,6 @@
-package ru.job4j.servlets.crud;
+package ru.job4j.servlets.crud.storage;
+
+import ru.job4j.servlets.crud.User;
 
 import java.util.List;
 
