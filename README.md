@@ -3,5 +3,4 @@
 # job4j_dreamjob
 
 - Servlets & JSP
-- Hibernate
 - Spring
