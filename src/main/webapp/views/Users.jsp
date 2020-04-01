@@ -17,11 +17,13 @@
         <td><%=user.getId()%></td>
         <td><%=user.getName()%></td>
         <td><form action=<%=request.getContextPath()%>/edit method=post>
-            <input type=submit name=edit name=delete style=background-color:limegreen value=<%=request.getParameter("edit")%>/>
+            <input type=hidden name=userId value=<%=user.getId()%>/>
+            <input type=submit value=Edit style="background-color:limegreen"/>
         </form>
         </td>
-        <td><form action=<%=request.getContextPath()%>/delete method=post>
-            <input type=submit name=delete style=background-color:crimson value=<%=request.getParameter("delete")%>/>
+        <td><form action=<%=request.getContextPath()%>/edit method=post>
+            <input type=hidden name=userId value=<%=user.getId()%>/>
+            <input type=submit value=Delete style="background-color:crimson"/>
         </form>
         </td>
     </tr>

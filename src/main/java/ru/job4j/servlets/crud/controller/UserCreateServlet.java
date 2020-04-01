@@ -17,18 +17,17 @@ public class UserCreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        if (action.equals("create")) {
+        if (action.equals("/create")) {
             req.getRequestDispatcher("/views/AddUser.jsp").forward(req, resp);
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         User user;
         String name = req.getParameter("name");
         String id = req.getParameter("id");
         user = new User(Integer.parseInt(id), name);
         logic.add(user);
-        resp.sendRedirect(String.format("%s/AddUser.jsp", req.getContextPath()));
     }
 }

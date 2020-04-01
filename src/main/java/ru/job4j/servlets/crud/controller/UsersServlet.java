@@ -24,18 +24,14 @@ public class UsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
-        String id = req.getParameter("id");
-        if (action.equals("findAll")) {
-            StringBuilder sb = new StringBuilder("<table>");
-            for (User user : logic.findAll()) {
-                sb.append("<tr><td>" + user.getName() + "</td></tr>");
-            }
-            sb.append("</table>");
-            //req.setAttribute("...", sb.toString());
-        } else if (action.equals("findById")) {
-            User user = logic.findById(Integer.parseInt(id));
-            //req.setAttribute("...", user);
+        //String id = req.getParameter("id");
+        if (action.equals("/list")) {
+            req.getRequestDispatcher("/views/Users.jsp").forward(req, resp);
         }
-        req.getRequestDispatcher("/views/Users.jsp").forward(req, resp);
+
+//        else if (action.equals("findById")) {
+//            User user = logic.findById(Integer.parseInt(id));
+//            req.setAttribute("...", user);
+//        }
     }
 }
