@@ -23,8 +23,6 @@ public class StartUI {
     }
 
     public void print() {
-        for (String value : store.getAll()) {
-            System.out.println(value);
-        }
+        store.getAll().forEach(System.out::print);
     }
 }
