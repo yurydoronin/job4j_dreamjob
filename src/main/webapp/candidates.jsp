@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="ru.job4j.dream.model.Store" %>
-<%@ page import="ru.job4j.dream.model.Post" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="ru.job4j.dream.model.Candidate" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,34 +31,31 @@
     <title>Работа мечты</title>
 </head>
 <body style="background-color:powderblue;">
-<div class="container">
+<div class="container pt-3">
     <div class="row">
-        <table class="table table-dark">
-            <thead>
-            <h1 style="text-align:center;">Объявления</h1>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Created</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for (Post post : Store.instOf().findAllPosts()) { %>
-            <tr>
-                <td><%=post.getId()%>
-                </td>
-                <td><%=post.getName()%>
-                </td>
-                <td><%=post.getDescription()%>
-                </td>
-                <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%>
-                </td>
-            </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </div><%-- row --%>
-</div><%-- container --%>
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                Кандидаты
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Названия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
+                    <tr>
+                        <td><%=can.getName()%>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

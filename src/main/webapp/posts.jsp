@@ -34,37 +34,39 @@
 <body style="background-color:powderblue;">
 <div class="container pt-3">
     <div class="row">
-        <div class="card-header" style="background-color: beige">
-            Вакансии
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                Вакансии
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <h3 style="text-align:center">Объявления</h3>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Created</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (Post post : Store.instOf().findAllPosts()) { %>
+                    <tr>
+                        <td><%=post.getId()%>
+                        </td>
+                        <td><%=post.getName()%>
+                        </td>
+                        <td><%=post.getDescription()%>
+                        </td>
+                        <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="card-body">
-            <table class="table table-dark">
-                <thead>
-                <h1 style="text-align:center;">Объявления</h1>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Created</th>
-                </tr>
-                </thead>
-                <tbody>
-                <% for (Post post : Store.instOf().findAll()) { %>
-                <tr>
-                    <td><%=post.getId()%>
-                    </td>
-                    <td><%=post.getName()%>
-                    </td>
-                    <td><%=post.getDescription()%>
-                    </td>
-                    <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%>
-                    </td>
-                </tr>
-                <% } %>
-                </tbody>
-            </table>
-        </div> <%-- card-body --%>
-    </div><%-- row --%>
-</div><%-- container --%>
+    </div>
+</div>
 </body>
 </html>
