@@ -36,12 +36,11 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Вакансии
+                <h3>Вакансии</h3>
             </div>
             <div class="card-body">
                 <table class="table">
                     <thead>
-                        <h3 style="text-align:center">Объявления</h3>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>

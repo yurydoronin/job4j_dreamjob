@@ -34,32 +34,15 @@
 <body style="background-color:powderblue;">
 <div class="container">
     <div class="row">
-        <table class="table table-dark">
-            <thead>
-            <h1 style="text-align:center;">Объявления</h1>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Created</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% for (Post post : Store.instOf().findAllPosts()) { %>
-            <tr>
-                <td><%=post.getId()%>
-                </td>
-                <td><%=post.getName()%>
-                </td>
-                <td><%=post.getDescription()%>
-                </td>
-                <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%>
-                </td>
-            </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </div><%-- row --%>
-</div><%-- container --%>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/posts.jsp">Вакансии</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.jsp">Кандидаты</a>
+            </li>
+        </ul>
+    </div>
+</div>
 </body>
 </html>
