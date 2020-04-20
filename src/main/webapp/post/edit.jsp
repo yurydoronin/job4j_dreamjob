@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="ru.job4j.dream.model.Store" %>
-<%@ page import="ru.job4j.dream.model.Candidate" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,29 +28,23 @@
     </style>
     <title>Работа мечты</title>
 </head>
-<body style="background-color:powderblue;">
+<body style="background-color:powderblue">
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                <h4>Кандидаты</h4>
+                <h4>Новая вакансия</h4>
             </div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Названия</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
-                    <tr>
-                        <td><%=can.getName()%>
-                        </td>
-                    </tr>
-                    <% } %>
-                    </tbody>
-                </table>
+                <form>
+                    <div class="form-group">
+                        <label>Имя:</label>
+                        <label>
+                            <input type="text" class="form-control">
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
             </div>
         </div>
     </div>

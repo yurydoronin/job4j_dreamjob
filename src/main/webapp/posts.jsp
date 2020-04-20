@@ -36,7 +36,7 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                <h3>Вакансии</h3>
+                <h4>Вакансии</h4>
             </div>
             <div class="card-body">
                 <table class="table">
