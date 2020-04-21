@@ -5,6 +5,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Class Store.
+ *
+ * @author Yury Doronin (doronin.ltd@gmail.com)
+ * @version 1.0
+ * @since 21.04.2020
+ */
 public class Store {
 
     private static final Store INSTANCE = new Store();

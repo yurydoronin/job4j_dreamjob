@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Class PostServlet.
+ *
+ * @author Yury Doronin (doronin.ltd@gmail.com)
+ * @version 1.0
+ * @since 21.04.2020
+ */
 public class PostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
