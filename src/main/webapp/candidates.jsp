@@ -41,14 +41,15 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Названия</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
                     </tr>
                     </thead>
                     <tbody>
                     <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
                     <tr>
-                        <td><%=can.getName()%>
-                        </td>
+                        <td><%=can.getId()%></td>
+                        <td><%=can.getName()%></td>
                     </tr>
                     <% } %>
                     </tbody>
