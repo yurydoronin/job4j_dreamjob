@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ page import="ru.job4j.dream.model.Store" %>
 <%@ page import="ru.job4j.dream.model.Candidate" %>
+<%@ page import="java.util.Collection" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +47,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Candidate can : Store.instOf().findAllCandidates()) { %>
+                    <% for (Candidate can : (Collection<Candidate>) request.getAttribute("candidates")) { %>
                     <tr>
                         <td><%=can.getId()%></td>
                         <td><%=can.getName()%></td>
@@ -54,6 +55,13 @@
                     <% } %>
                     </tbody>
                 </table>
+                <form action="<%=request.getContextPath()%>/index.do">
+                    <button type="submit" class="btn btn-primary">Назад</button>
+                </form>
+                <p></p>
+                <form action="<%=request.getContextPath()%>/candidate/edit.jsp">
+                    <button type="submit" class="btn btn-primary">Добавить кондидата</button>
+                </form>
             </div>
         </div>
     </div>

@@ -36,8 +36,12 @@
                 <h4>Новая вакансия</h4>
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/post/save" method="post">
+                <form action="<%=request.getContextPath()%>/posts.do" method="post">
                     <div class="form-group">
+                        <label>ID:</label>
+                        <label>
+                            <input type="text" class="form-control" name="id">
+                        </label>
                         <label>Вакансия:</label>
                         <label>
                             <input type="text" class="form-control" name="name">

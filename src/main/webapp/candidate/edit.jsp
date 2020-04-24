@@ -36,8 +36,12 @@
                 <h4>Новый кандидат</h4>
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/candidate/save" method="post">
+                <form action="<%=request.getContextPath()%>/candidate.do" method="post">
                     <div class="form-group">
+                        <label>ID:</label>
+                        <label>
+                            <input type="text" class="form-control" name="id">
+                        </label>
                         <label>Имя:</label>
                         <label>
                             <input type="text" class="form-control" name="name">

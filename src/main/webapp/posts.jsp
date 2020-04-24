@@ -2,6 +2,7 @@
 <%@ page import="ru.job4j.dream.model.Store" %>
 <%@ page import="ru.job4j.dream.model.Post" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
+<%@ page import="java.util.Collection" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,20 +50,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Post post : Store.instOf().findAllPosts()) { %>
+                    <% for (Post post : (Collection<Post>) request.getAttribute("posts")) { %>
                     <tr>
-                        <td><%=post.getId()%>
-                        </td>
-                        <td><%=post.getName()%>
-                        </td>
-                        <td><%=post.getDescription()%>
-                        </td>
-                        <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%>
-                        </td>
+                        <td><%=post.getId()%></td>
+                        <td><%=post.getName()%></td>
+                        <td><%=post.getDescription()%></td>
+                        <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%></td>
                     </tr>
                     <% } %>
                     </tbody>
                 </table>
+                <form action="<%=request.getContextPath()%>/index.do">
+                    <button type="submit" class="btn btn-primary">Назад</button>
+                </form>
+                <p></p>
+                <form action="<%=request.getContextPath()%>/post/edit.jsp">
+                    <button type="submit" class="btn btn-primary">Добавить вакансию</button>
+                </form>
             </div>
         </div>
     </div>
