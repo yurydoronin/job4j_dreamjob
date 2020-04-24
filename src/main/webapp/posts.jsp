@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="ru.job4j.dream.model.Store" %>
-<%@ page import="ru.job4j.dream.model.Post" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page import="java.util.Collection" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,14 +48,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Post post : (Collection<Post>) request.getAttribute("posts")) { %>
-                    <tr>
-                        <td><%=post.getId()%></td>
-                        <td><%=post.getName()%></td>
-                        <td><%=post.getDescription()%></td>
-                        <td><%=post.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss"))%></td>
-                    </tr>
-                    <% } %>
+                    <c:forEach items="${posts}" var="post">
+                        <tr>
+                            <td>${post.id}</td>
+                            <td>${post.name}</td>
+                            <td>${post.description}</td>
+                            <td><fmt:formatDate value="${post.created}" pattern="dd-MM-yyyy hh:mm:ss"/></td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <form action="<%=request.getContextPath()%>/index.do">

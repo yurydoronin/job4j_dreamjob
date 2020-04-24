@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="ru.job4j.dream.model.Store" %>
-<%@ page import="ru.job4j.dream.model.Candidate" %>
-<%@ page import="java.util.Collection" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,12 +45,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <% for (Candidate can : (Collection<Candidate>) request.getAttribute("candidates")) { %>
+                    <c:forEach items="${candidates}" var="can">
                     <tr>
-                        <td><%=can.getId()%></td>
-                        <td><%=can.getName()%></td>
+                        <td>${can.id}</td>
+                        <td>${can.name}</td>
                     </tr>
-                    <% } %>
+                    </c:forEach>
                     </tbody>
                 </table>
                 <form action="<%=request.getContextPath()%>/index.do">
