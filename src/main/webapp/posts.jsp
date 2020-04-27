@@ -51,9 +51,14 @@
                     <c:forEach items="${posts}" var="post">
                         <tr>
                             <td>${post.id}</td>
-                            <td>${post.name}</td>
+                            <td>
+                                <a href=<c:url value="/post/edit.jsp?id=${post.id}"/>>
+                                    <c:out value="${post.name}"/>
+                                </a>
+                            </td>
                             <td>${post.description}</td>
-                            <td><fmt:formatDate value="${post.created}" pattern="dd-MM-yyyy hh:mm:ss"/></td>
+                            <td>${post.created}</td>
+<%--                            <td><fmt:formatDate value="${post.created}" pattern="dd-MM-yyyy hh:mm:ss"/></td>--%>
                         </tr>
                     </c:forEach>
                     </tbody>
