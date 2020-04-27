@@ -1,9 +1,10 @@
 package ru.job4j.spring.di;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
@@ -16,13 +17,15 @@ import java.io.InputStreamReader;
 @Component
 public class ConsoleInput {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ConsoleInput.class);
+
     public String ask() {
         System.out.print("Enter a name: ");
         String answer = "";
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             answer = reader.readLine();
-        } catch (IOException exp) {
-            System.out.println(exp.getMessage());
+        } catch (Exception e) {
+            LOG.error(e.getMessage(), e);
         }
         return answer;
     }
