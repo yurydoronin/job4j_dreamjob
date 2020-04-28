@@ -1,7 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ page import="ru.job4j.dream.model.Store" %>
-<%@ page import="ru.job4j.dream.model.Post" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>

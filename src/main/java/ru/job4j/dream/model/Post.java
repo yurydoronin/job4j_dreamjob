@@ -72,7 +72,7 @@ public class Post {
 
     @Override
     public String toString() {
-        return String.format("User: id %s, name %s, created %s",
-                id, name, created.format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss")));
+        return String.format("Post: id %s, name %s, description %s, created %s",
+                id, name, description, created.format(DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss")));
     }
 }
