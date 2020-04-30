@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,26 +30,29 @@
     </style>
     <title>Работа мечты</title>
 </head>
-<body style="background-color:powderblue;">
-<div class="container">
+<body style="background-color:powderblue">
+<div class="container pt-3">
     <div class="row">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/posts.do">Вакансии</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidates.do">Кандидаты</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/post/edit.jsp">Добавить вакансию</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/candidate/edit.jsp">Добавить кандидата</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/login.jsp">Войти</a>
-            </li>
-        </ul>
+        <div class="card" style="width: 100%">
+            <div class="card-header">
+                <h4>Авторизация</h4>
+            </div>
+            <div class="card-body">
+                <form action="<%=request.getContextPath()%>/auth.do" method="post">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <label>
+                            <input type="text" class="form-control" name="email">
+                        </label>
+                        <label>Password</label>
+                        <label>
+                            <input type="text" class="form-control" name="password">
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Войти</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 </body>

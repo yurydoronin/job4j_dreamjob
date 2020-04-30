@@ -39,7 +39,7 @@ public class PsqlStore implements Store, AutoCloseable {
             pool.setMaxIdle(10);
             pool.setMaxOpenPreparedStatements(100);
         } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
+            throw new IllegalStateException(e);
         }
     }
 

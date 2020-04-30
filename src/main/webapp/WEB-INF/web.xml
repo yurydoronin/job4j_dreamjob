@@ -6,6 +6,7 @@
          version="4.0">
 
     <display-name>Archetype Created Web Application</display-name>
+
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
         <servlet-class>ru.job4j.dream.servlet.IndexServlet</servlet-class>
@@ -16,12 +17,12 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>CandidatesServlet</servlet-name>
-        <servlet-class>ru.job4j.dream.servlet.CandidatesServlet</servlet-class>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>ru.job4j.dream.servlet.AuthServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>CandidatesServlet</servlet-name>
-        <url-pattern>/candidates.do</url-pattern>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -31,6 +32,15 @@
     <servlet-mapping>
         <servlet-name>PostServlet</servlet-name>
         <url-pattern>/posts.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CandidatesServlet</servlet-name>
+        <servlet-class>ru.job4j.dream.servlet.CandidatesServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CandidatesServlet</servlet-name>
+        <url-pattern>/candidates.do</url-pattern>
     </servlet-mapping>
 
     <servlet>
