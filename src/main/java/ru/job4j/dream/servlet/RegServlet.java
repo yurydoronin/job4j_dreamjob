@@ -2,6 +2,7 @@ package ru.job4j.dream.servlet;
 
 import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.PsqlStore;
+import ru.job4j.dream.model.User;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,28 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Class PostServlet.
+ * Class RegServlet.
  *
  * @author Yury Doronin (doronin.ltd@gmail.com)
  * @version 1.0
  * @since 21.04.2020
  */
-public class PostServlet extends HttpServlet {
+public class RegServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("user", req.getSession().getAttribute("user"));
-        req.setAttribute("posts", PsqlStore.instOf().findAllPosts());
-        req.getRequestDispatcher("posts.jsp").forward(req, resp);
+        req.setAttribute("users", PsqlStore.instOf().findAllUsers());
+        req.getRequestDispatcher("admin.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         PsqlStore.instOf().save(
-                new Post(Integer.parseInt(req.getParameter("id")),
+                new User(Integer.parseInt(
+                        req.getParameter("id")),
                         req.getParameter("name"),
-                        "text"));
+                        req.getParameter("email"),
+                        req.getParameter("password")));
         resp.sendRedirect(req.getContextPath() + "/posts.do");
     }
 }

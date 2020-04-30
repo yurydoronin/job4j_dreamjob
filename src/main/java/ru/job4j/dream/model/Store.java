@@ -11,16 +11,24 @@ import java.util.Collection;
  */
 public interface Store {
 
+    Collection<User> findAllUsers();
+
     Collection<Post> findAllPosts();
 
     Collection<Candidate> findAllCandidates();
 
-    void save(Post post);
-
-    void save(Candidate candidate);
+    User userFindById(int id);
 
     Post postFindById(int id);
 
     Candidate candidateFindById(int id);
+
+    User findByEmail(String email);
+
+    void save(User user);
+
+    void save(Post post);
+
+    void save(Candidate candidate);
 
 }

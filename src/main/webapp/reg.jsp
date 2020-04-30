@@ -1,6 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,11 +33,19 @@
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                <h4>Авторизация</h4>
+                <h4>Новый пользователь</h4>
             </div>
             <div class="card-body">
-                <form action="<%=request.getContextPath()%>/auth.do" method="post">
+                <form action="<%=request.getContextPath()%>/reg.do" method="post">
                     <div class="form-group">
+                        <label>ID</label>
+                        <label>
+                            <input type="text" class="form-control" name="id">
+                        </label>
+                        <label>Name</label>
+                        <label>
+                            <input type="text" class="form-control" name="name">
+                        </label>
                         <label>Email</label>
                         <label>
                             <input type="text" class="form-control" name="email">
@@ -49,10 +55,8 @@
                             <input type="text" class="form-control" name="password">
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
                 </form>
-                <p></p>
-                <a href="<%=request.getContextPath()%>/reg.jsp">Регистрация</a>
             </div>
         </div>
     </div>
