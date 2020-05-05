@@ -1,0 +1,1 @@
+update accidents set name = 'Spring MVC' where id = 2;

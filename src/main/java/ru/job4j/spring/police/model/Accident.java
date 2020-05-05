@@ -1,7 +1,10 @@
 package ru.job4j.spring.police.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 /**
@@ -11,51 +14,22 @@ import java.util.Objects;
  * @version 1.0
  * @since 19.04.2020
  */
+@Getter
+@Setter
 @Component
+@Entity
+@Table(name = "accidents")
 public class Accident {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private String name;
     private String text;
     private String address;
 
-    public Accident(int id, String name, String text, String address) {
-        this.id = id;
-        this.name = name;
-        this.text = text;
-        this.address = address;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public Accident() {
     }
 
     @Override
@@ -76,5 +50,11 @@ public class Accident {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Accident: id %s, name %s, text %s, address %s",
+                id, name, text, address);
     }
 }

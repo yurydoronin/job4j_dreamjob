@@ -1,5 +1,3 @@
-<%@ page import="ru.job4j.spring.police.repository.AccidentRepository" %>
-<%@ page import="ru.job4j.spring.police.model.Accident" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -29,39 +27,45 @@
             padding: 5px;
         }
     </style>
-    <title>Accidents</title>
+    <title>Edit accidents</title>
 </head>
-
 <body style="background-color:powderblue;">
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
             <div class="card-header">
-                Правонарушения
+                <h4>Редактировнаие нарушения</h4>
             </div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Правонарушения</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${accidents}" var="accident">
-<%--                    <% for (Accident accident : AccidentRepository.instOf().findAll()) { %>--%>
-                    <tr>
-                        <td>{accident.id}</td>
-                        <td>{accident.name}</td>
-                        <td>{accident.text}</td>
-                        <td>{accident.address}</td>
-                    </tr>
-                    </c:forEach>
-<%--                    <% } %>--%>
-                    </tbody>
-                </table>
+                <form action=${pageContext.servletContext.contextPath}/add.do method="post">
+                    <div class="form-group">
+                        <label>ID:</label>
+                        <label>
+                            <input type="text" class="form-control" name="id" value="${accident.id}">
+                        </label>
+                        <label>Название:</label>
+                        <label>
+                            <input type="text" class="form-control" name="name" value="${accident.name}">
+                        </label>
+                        <label>Текст:</label>
+                        <label>
+                            <input type="text" class="form-control" name="text" value="${accident.text}">
+                        </label>
+                        <label>Адрес:</label>
+                        <label>
+                            <input type="text" class="form-control" name="address" value="${accident.address}">
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                </form>
+                <p></p>
+                <form action="<c:url value='/delete.do?id=${accident.id}'/>" method="post">
+                    <button type="submit" class="btn btn-primary">Удалить нарушение</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 </body>
 </html>
+
