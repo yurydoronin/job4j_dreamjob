@@ -10,6 +10,7 @@
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
         <servlet-class>ru.job4j.dream.servlet.IndexServlet</servlet-class>
+        <!--<load-on-startup>1</load-on-startup>-->
     </servlet>
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
@@ -72,44 +73,6 @@
     <servlet-mapping>
         <servlet-name>CandidateServlet</servlet-name>
         <url-pattern>/candidate.do</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>EchoServlet</servlet-name>
-        <servlet-class>ru.job4j.servlets.EchoServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>EchoServlet</servlet-name>
-        <url-pattern>/echo</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UsersServlet</servlet-name>
-        <servlet-class>ru.job4j.servlets.crud.controller.UsersServlet</servlet-class>
-<!--        <load-on-startup>1</load-on-startup>-->
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UsersServlet</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UserCreateServlet</servlet-name>
-        <servlet-class>ru.job4j.servlets.crud.controller.UserCreateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UserCreateServlet</servlet-name>
-        <url-pattern>/create</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>UserUpdateServlet</servlet-name>
-        <servlet-class>ru.job4j.servlets.crud.controller.UserUpdateServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>UserUpdateServlet</servlet-name>
-        <url-pattern>/edit</url-pattern>
-        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
 
 </web-app> 

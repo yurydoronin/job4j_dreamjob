@@ -34,14 +34,14 @@ public class AuthServlet extends HttpServlet {
             admin.setName("Admin");
             admin.setEmail(email);
             session.setAttribute("user", admin);
-            resp.sendRedirect(req.getContextPath() + "/reg.do");
+            resp.sendRedirect(String.format("%s/reg.do", req.getContextPath()));
         } else if (email.equals(Objects.requireNonNull(user).getEmail()) && password.equals(user.getPassword())) {
             HttpSession session = req.getSession();
             session.setAttribute("user", user.getName());
-            resp.sendRedirect(req.getContextPath() + "/posts.do");
+            resp.sendRedirect(String.format("%s/posts.do", req.getContextPath()));
         } else {
             req.setAttribute("error", "Не верный email или пароль");
-            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
         }
     }
 }

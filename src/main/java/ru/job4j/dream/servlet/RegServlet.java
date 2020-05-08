@@ -1,6 +1,5 @@
 package ru.job4j.dream.servlet;
 
-import ru.job4j.dream.model.Post;
 import ru.job4j.dream.model.PsqlStore;
 import ru.job4j.dream.model.User;
 
@@ -23,7 +22,7 @@ public class RegServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("user", req.getSession().getAttribute("user"));
         req.setAttribute("users", PsqlStore.instOf().findAllUsers());
-        req.getRequestDispatcher("admin.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(req, resp);
     }
 
     @Override
@@ -35,6 +34,6 @@ public class RegServlet extends HttpServlet {
                         req.getParameter("name"),
                         req.getParameter("email"),
                         req.getParameter("password")));
-        resp.sendRedirect(req.getContextPath() + "/posts.do");
+        resp.sendRedirect(String.format("%s/posts.do", req.getContextPath()));
     }
 }
