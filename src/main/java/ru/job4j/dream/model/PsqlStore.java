@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public User findByEmail(String email) {
         User result = null;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "select * from dreamjob_users where email = ?")) {
             pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
@@ -66,7 +67,8 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public Collection<User> findAllUsers() {
         List<User> users = new ArrayList<>();
-        try (PreparedStatement pst = pool.getConnection().prepareStatement("SELECT * FROM dreamjob_users")) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement pst = cn.prepareStatement("SELECT * FROM dreamjob_users")) {
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     users.add(this.user(rs));
@@ -81,7 +83,8 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public Collection<Post> findAllPosts() {
         List<Post> posts = new ArrayList<>();
-        try (PreparedStatement pst = pool.getConnection().prepareStatement("SELECT * FROM post")) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement pst = cn.prepareStatement("SELECT * FROM post")) {
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     posts.add(this.post(rs));
@@ -96,7 +99,8 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public Collection<Candidate> findAllCandidates() {
         List<Candidate> posts = new ArrayList<>();
-        try (PreparedStatement pst = pool.getConnection().prepareStatement("SELECT * FROM candidate")) {
+        try (Connection cn = pool.getConnection();
+             PreparedStatement pst = cn.prepareStatement("SELECT * FROM candidate")) {
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
                     posts.add(this.candidate(rs));
@@ -158,7 +162,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean create(User user) {
         boolean result = false;
-        try (PreparedStatement ps = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement ps = cn.prepareStatement(
                 "insert into dreamjob_users(name, email, password) values (?, ?, ?)")) {
             ps.setString(1, user.getName());
             ps.setString(2, user.getEmail());
@@ -174,7 +178,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean update(User user) {
         boolean result = false;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "update dreamjob_users set name = ?, email = ?, password = ? where id = ?")) {
             pst.setString(1, user.getName());
             pst.setString(2, user.getEmail());
@@ -192,7 +196,7 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public User userFindById(int id) {
         User result = null;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "select * from dreamjob_users where id = ?")) {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
@@ -207,7 +211,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean create(Post post) {
         boolean result = false;
-        try (PreparedStatement ps = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement ps = cn.prepareStatement(
                 "insert into post(name, description) values (?, ?)")) {
             ps.setString(1, post.getName());
             ps.setString(2, post.getDescription());
@@ -222,7 +226,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean update(Post post) {
         boolean result = false;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "update post set name = ? where id = ?")) {
             pst.setString(1, post.getName());
             pst.setInt(2, post.getId());
@@ -238,7 +242,7 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public Post postFindById(int id) {
         Post result = null;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "select * from post where id = ?")) {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
@@ -253,7 +257,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean create(Candidate candidate) {
         boolean result = false;
-        try (PreparedStatement ps = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement ps = cn.prepareStatement(
                 "insert into candidate(name) values (?)")) {
             ps.setString(1, candidate.getName());
             if (ps.executeUpdate() > 0) {
@@ -267,7 +271,7 @@ public class PsqlStore implements Store, AutoCloseable {
 
     private boolean update(Candidate candidate) {
         boolean result = false;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "update candidate set name = ? where id = ?")) {
             pst.setString(1, candidate.getName());
             pst.setInt(2, candidate.getId());
@@ -283,7 +287,7 @@ public class PsqlStore implements Store, AutoCloseable {
     @Override
     public Candidate candidateFindById(int id) {
         Candidate result = null;
-        try (PreparedStatement pst = pool.getConnection().prepareStatement(
+        try (Connection cn = pool.getConnection(); PreparedStatement pst = cn.prepareStatement(
                 "select * from candidate where id = ?")) {
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();

@@ -31,6 +31,12 @@
     <title>Работа мечты</title>
 </head>
 <body style="background-color:powderblue">
+<c:if test="${error != ''}">
+    <strong><div style="background-color: orangered; text-align: center;" >
+        <c:out value="${error}"/>
+    </div></strong>
+</c:if>
+<p></p>
 <div class="container pt-3">
     <div class="row">
         <div class="card" style="width: 100%">
@@ -52,7 +58,7 @@
                     <button type="submit" class="btn btn-primary">Войти</button>
                 </form>
                 <p></p>
-                <a href="<%=request.getContextPath()%>/WEB-INF/views/reg.jsp">Регистрация</a>
+                <a href="<%=request.getContextPath()%>/views/reg.jsp">Регистрация</a>
             </div>
         </div>
     </div>
