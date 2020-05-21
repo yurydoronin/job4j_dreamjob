@@ -20,6 +20,6 @@ public class CandidatesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("candidates", PsqlStore.instOf().findAllCandidates());
-        req.getRequestDispatcher("/views/candidates.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/candidates.jsp").forward(req, resp);
     }
 }

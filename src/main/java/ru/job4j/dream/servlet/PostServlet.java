@@ -22,7 +22,7 @@ public class PostServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("user", req.getSession().getAttribute("user"));
         req.setAttribute("posts", PsqlStore.instOf().findAllPosts());
-        req.getRequestDispatcher("/views/posts.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/posts.jsp").forward(req, resp);
     }
 
     @Override

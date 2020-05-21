@@ -58,7 +58,7 @@
                     <button type="submit" class="btn btn-primary">Войти</button>
                 </form>
                 <p></p>
-                <a href="<%=request.getContextPath()%>/views/reg.jsp">Регистрация</a>
+                <a href="<%=request.getContextPath()%>/WEB-INF/views/reg.jsp">Регистрация</a>
             </div>
         </div>
     </div>

@@ -35,7 +35,7 @@ public class AuthServlet extends HttpServlet {
             user = PsqlStore.instOf().findByEmail(email);
             if (user == null) {
                 req.setAttribute("error", "Не верный email или пароль");
-                req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+                req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req, resp);
             } else if (email.equals((user.getEmail())) && password.equals(user.getPassword())) {
                 HttpSession session = req.getSession();
                 session.setAttribute("user", user.getName());

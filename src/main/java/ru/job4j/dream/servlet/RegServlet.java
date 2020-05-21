@@ -22,7 +22,7 @@ public class RegServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("user", req.getSession().getAttribute("user"));
         req.setAttribute("users", PsqlStore.instOf().findAllUsers());
-        req.getRequestDispatcher("/views/admin.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/views/admin.jsp").forward(req, resp);
     }
 
     @Override
